@@ -107,26 +107,24 @@ static char *camera_fixup_getparams(int id, const char *settings)
     params.dump();
 #endif
 
-    params.set(android::CameraParameters::KEY_QC_LONGSHOT_SUPPORTED, "false");
-    params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, "auto,hdr");
-    params.set(android::CameraParameters::KEY_AUTO_WHITEBALANCE_LOCK_SUPPORTED, "false");
+    params.set("longshot-supported", "false");
+    params.set("scene-mode-values", "auto,hdr");
+    params.set("auto-whitebalance-lock-supported", "false");
 
-    const char *manualFocusPosition =
-            params.get(android::CameraParameters::KEY_QC_MANUAL_FOCUS_POSITION);
-    const char *manualFocusPositionType =
-            params.get(android::CameraParameters::KEY_QC_MANUAL_FOCUS_POS_TYPE);
+    const char *manualFocusPosition = params.get("manual-focus-position");
+    const char *manualFocusPositionType = params.get("manual-focus-pos-type");
     if (manualFocusPositionType != NULL) {
         if (!strcmp(manualFocusPositionType, "2")) {
             if (manualFocusPosition != NULL) {
-                params.set(android::CameraParameters::KEY_QC_FOCUS_POSITION_SCALE, manualFocusPosition);
+                params.set("cur-focus-scale", manualFocusPosition);
             } else {
-                params.set(android::CameraParameters::KEY_QC_FOCUS_POSITION_SCALE, "0");
+                params.set("cur-focus-scale", "0");
             }
         } else if (!strcmp(manualFocusPositionType, "3")) {
             if (manualFocusPosition != NULL) {
-                params.set(android::CameraParameters::KEY_QC_FOCUS_POSITION_DIOPTER, manualFocusPosition);
+                params.set("cur-focus-diopter", manualFocusPosition);
             } else {
-                params.set(android::CameraParameters::KEY_QC_FOCUS_POSITION_DIOPTER, "0");
+                params.set("cur-focus-diopter", "0");
             }
         }
     }
@@ -155,7 +153,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
     const char *sceneMode = params.get(android::CameraParameters::KEY_SCENE_MODE);
     if (sceneMode != NULL) {
         if (!strcmp(sceneMode, android::CameraParameters::SCENE_MODE_HDR)) {
-            params.set(android::CameraParameters::KEY_QC_SUPPORTED_HDR_NEED_1X, "false");
+            params.set("hdr-need-1x", "false");
         }
     }
 

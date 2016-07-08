@@ -44,11 +44,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     $(LOCAL_PATH)/permissions/asus.software.azs.xml:system/etc/permissions/asus.software.azs.xml \
     $(LOCAL_PATH)/permissions/asus.software.zenui.xml:system/etc/permissions/asus.software.zenui.xml
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+
+#Asus Actions
+PRODUCT_PACKAGES += \
+    AsusActions
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -72,17 +75,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_mtp_ZE600KL.xml:system/etc/mixer_paths_mtp_ZE600KL.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
-# ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library \
-    libantradio
-
 # Camera
 PRODUCT_PACKAGES += \
     bspcapability \
-    camera.msm8916 \
-    Snap
+    camera.msm8916
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -104,10 +100,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -135,8 +127,7 @@ PRODUCT_COPY_FILES += \
 
 # Keyhandler
 PRODUCT_PACKAGES += \
-    CMActions \
-    com.cyanogenmod.keyhandler
+    com.dirtyunicorns.keyhandler
 
 # Keystore
 PRODUCT_PACKAGES += \
