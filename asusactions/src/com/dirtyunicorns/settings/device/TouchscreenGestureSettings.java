@@ -61,10 +61,10 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         mPocketPreference.setEnabled(dozeEnabled);
 
         // Gestures
-        for (String gestureKey : AsusActionsSettings.ALL_GESTURE_KEYS) {
-            Preference pref = findPreference(gestureKey);
-            pref.setOnPreferenceChangeListener(mGesturePrefListener);
-        }
+        // for (String gestureKey : AsusActionsSettings.ALL_GESTURE_KEYS) {
+        //    Preference pref = findPreference(gestureKey);
+        //    pref.setOnPreferenceChangeListener(mGesturePrefListener);
+        // }
 
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
