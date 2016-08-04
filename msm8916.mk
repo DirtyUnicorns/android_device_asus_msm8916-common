@@ -77,7 +77,6 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    bspcapability \
     camera.msm8916
 
 # Charger
